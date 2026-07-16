@@ -9,6 +9,7 @@ function App() {
         <Header />
         <Main />
         <Footer />
+        <ImagePopup card={imageSelected} onClose={handleCloseImage} />
       </div>
     </>
   );
