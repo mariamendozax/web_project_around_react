@@ -30,7 +30,6 @@ console.log(cards);
 
 function Main() {
   const [popup, setPopup] = useState(null);
-  const [imageSelected, setImageSelected] = useState(null);
   const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
   const editAvatarPopup = {
     title: "Cambiar foto de perfil",
@@ -47,10 +46,6 @@ function Main() {
 
   function handleClosePopup() {
     setPopup(null);
-  }
-
-  function handleOpenImage(imageSelected) {
-    setImageSelected(imageSelected);
   }
 
   return (
@@ -85,7 +80,11 @@ function Main() {
       <section className="cards page__section">
         <ul className="cards__list">
           {cards.map((card) => (
-            <Card key={card._id} card={card} onOpenImage={handleOpenImage} />
+            <Card
+              key={card._id}
+              card={card}
+              handleOpenPopup={handleOpenPopup}
+            />
           ))}
         </ul>
       </section>
