@@ -71,7 +71,7 @@ function Main({
             <Card
               key={card._id}
               card={card}
-              handleOpenPopup={onOpenPopup}
+              onOpenPopup={onOpenPopup}
               onCardLike={onCardLike}
               onCardDelete={onCardDelete}
             />

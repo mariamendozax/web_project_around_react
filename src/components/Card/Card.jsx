@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
 import ImagePopup from "../ImagePopup/ImagePopup";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import RemoveCard from "../RemoveCard/RemoveCard";
 
 export default function Card(props) {
   const { name, link, isLiked } = props.card;
   const { currentUser } = useContext(CurrentUserContext);
-  const { handleOpenPopup, onCardLike, onCardDelete } = props;
+  const { onOpenPopup, onCardLike, onCardDelete } = props;
   const imagePopup = {
     children: <ImagePopup card={props.card} />,
   };
@@ -17,7 +18,10 @@ export default function Card(props) {
   }
 
   function handleDeleteClick() {
-    onCardDelete(props.card);
+    onOpenPopup({
+      title: "¿Estás seguro?",
+      children: <RemoveCard card={props.card} onCardDelete={onCardDelete} />,
+    });
   }
 
   return (
@@ -26,7 +30,7 @@ export default function Card(props) {
         className="card__image"
         src={link}
         alt=""
-        onClick={() => handleOpenPopup(imagePopup)}
+        onClick={() => onOpenPopup(imagePopup)}
       />
       <button
         aria-label="Delete card"

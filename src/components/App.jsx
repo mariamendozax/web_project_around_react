@@ -93,6 +93,7 @@ function App() {
         setCards((state) =>
           state.filter((currentCard) => currentCard._id !== card._id),
         );
+        handleClosePopup();
       })
       .catch((error) => console.error(error));
   }
