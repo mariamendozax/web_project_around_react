@@ -31,10 +31,13 @@ function App() {
 
   const handleUpdateUser = (data) => {
     (async () => {
-      await api.setUserInfo(data).then((newData) => {
-        setCurrentUser(newData);
-        handleClosePopup();
-      });
+      await api
+        .setUserInfo(data)
+        .then((newData) => {
+          setCurrentUser(newData);
+          handleClosePopup();
+        })
+        .catch((err) => console.log(err));
     })();
   };
 
